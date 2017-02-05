@@ -87,15 +87,15 @@
     };
 
     DeanTown.prototype.startAudio = function(){
-        this.source.start(0);
+        window.DeanTown.source.start(0);
     };
 
     DeanTown.prototype.playAudio = function(){
-        this.source.play();
+        window.DeanTown.source.play();
     };
 
     DeanTown.prototype.pauseAudio = function(){
-        this.source.pause();
+        window.DeanTown.source.pause();
     };
 
     /*
