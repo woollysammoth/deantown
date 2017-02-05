@@ -25,6 +25,7 @@
         this.source.connect(this.audioCtx.destination);
         this.source.buffer = this.audioFileBuffer;
         this.source.start(0, this.player.getCurrentTime());
+        this.audioHasStarted = true;
 
         this.playing = true;
     };
@@ -34,7 +35,7 @@
     };
 
     DeanTown.prototype.stop = function() {
-        if (this.source) {
+        if (this.source && this.audioHasStarted) {
             this.source.disconnect();
             this.source.stop(0);
             this.source = null;
