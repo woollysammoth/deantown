@@ -9,6 +9,15 @@
         this.startedAt = 0;
         this.pausedAt = 0;
         this.playing = false;
+
+
+        this.analyser = null;
+        this.fbc_array = [];
+        this.bars = null;
+        this.bar_x = null;
+        this.bar_width = null;
+        this.bar_height = null;
+
     }
 
     DeanTown.prototype.init = function(){
@@ -105,9 +114,13 @@
                self.audioCtx.decodeAudioData(self.audioFile, function(buffer) {
                     self.audioFileBuffer = buffer;
                     self.source.buffer = buffer;
+                    self.analyser = context.createAnalyser();
                     self.source.connect(self.audioCtx.destination);
                     self.source.loop = true;
                     self.audioReady = true;
+                    self.source.connect(analyser);
+                    self.analyser.connect(context.destination);
+                    self.frameLooper();
                 }, function(e) {
                     console.log('Audio error! ', e);
                 });
@@ -116,11 +129,20 @@
         request.send();
     };
 
+    DeanTown.prototype.frameLooper = function(){
+        window.webkitRequestAnimationFrame(this.frameLooper);
+        this.fbc_array = new Uint8Array(this.analyser.frequencyBinCount);
+        this.analyser.getByteFrequencyData(this.fbc_array);
+
+        var amplitude = -(this.fbc_array[5] / 2);
+
+        console.log("AMP", amplitude);
+    }
+
     DeanTown.prototype.startAudio = function(){
         window.DeanTown.source.start(0);
         window.DeanTown.audioHasStarted = true;
     };
-
 
     DeanTown.prototype.pauseAudio = function(){
         var self = this;
