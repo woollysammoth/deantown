@@ -155,7 +155,7 @@
     window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
     window.checkAudioVideo = setInterval(function(){
-        if(DeanTown.audioReady && DeanTown.videoReady){
+        if(window.DeanTown.audioReady && window.DeanTown.videoReady){
             window.DeanTown.playAll();
             clearInterval(window.checkAudioVideo);
         }
