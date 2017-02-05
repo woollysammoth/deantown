@@ -128,10 +128,10 @@
         if(!DeanTown.smoke){
             return;
         }
-        
+
         DeanTown.smoke.addsmoke(Math.floor(Math.random() * innerWidth) + 1, Math.floor(Math.random() * innerHeight) + 1 , 1);
 
-        window.requestAnimationFrame(this.addSmoke);
+        window.requestAnimationFrame(DeanTown.addRandomSmoke);
     };
 
     DeanTown.prototype.resetCanvasSize = function(){
