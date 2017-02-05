@@ -38,7 +38,6 @@
         if (this.source && this.audioHasStarted) {
             this.source.disconnect();
             this.source.stop(0);
-            this.source = null;
         }
         this.playing = false;
     };
