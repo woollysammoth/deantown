@@ -9,7 +9,7 @@ window.addEventListener('resize', function(){
     canvas.height = innerHeight;
 }, true);
 
-var smoke = smokemachine(ctx, [54, 16.8, 18.2]);
+var smoke = smokemachine(ctx, [50, 50, 50]);
 
     smoke.start();
 
