@@ -22,18 +22,17 @@
         this.video = new YT.Player('video', {
             autoplay: false,
             events: {
-                'onReady': window.DeanTown.onVideoReady,
+                'onReady': function(event){
+                    window.DeanTown.player = event.target;
+                    window.DeanTown.videoReady = true;
+                },
                 'onStateChange': window.DeanTown.onVideoStateChange
             }
         });
     };
 
     DeanTown.prototype.startVideo = function(){
-        this.video.playVideo();
-    };
-
-    DeanTown.prototype.onVideoReady = function(event){
-        this.videoReady = true;
+        this.player.playVideo();
     };
 
     DeanTown.prototype.onVideoStateChange = function(event){
