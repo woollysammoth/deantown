@@ -33,8 +33,12 @@ body{
 }
 
 .foreground{
-	top: 0;
-	color: #fff;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 2;
 }
 
 @media (min-aspect-ratio: 16/9) {
