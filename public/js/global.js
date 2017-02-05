@@ -75,7 +75,14 @@
 
         request.onload = function() {
             self.audioFile = request.response;
-            self.audioReady = true;
+               self.audioCtx.decodeAudioData(self.audioFile, function(buffer) {
+                    self.source.buffer = buffer;
+                    self.source.connect(self.audioCtx.destination);
+                    self.source.loop = true;
+                    self.audioReady = true;
+                }, function(e) {
+                    console.log('Audio error! ', e);
+                });
         }
 
         request.send();
@@ -86,23 +93,28 @@
         window.DeanTown.audioHasStarted = true;
     };
 
+
     DeanTown.prototype.playAudio = function(){
         var self = this;
+
+        window.DeanTown.source.start(window.DeanTown.player.getCurrentTime());
+        window.DeanTown.audioHasStarted = true;
+    };
+
+    DeanTown.prototype.pauseAudio = function(){
+        var self = this;
+        if(window.DeanTown.audioHasStarted){
+            window.DeanTown.source.stop();
+            this.audioReady = false;
 
             this.audioCtx.decodeAudioData(this.audioFile, function(buffer) {
                 self.source.buffer = buffer;
                 self.source.connect(self.audioCtx.destination);
                 self.source.loop = true;
-                window.DeanTown.source.start(window.DeanTown.player.getCurrentTime());
-                window.DeanTown.audioHasStarted = true;
+                self.audioReady = true;
             }, function(e) {
                 console.log('Audio error! ', e);
             });
-    };
-
-    DeanTown.prototype.pauseAudio = function(){
-        if(window.DeanTown.audioHasStarted){
-            window.DeanTown.source.stop();
         }
     };
 
