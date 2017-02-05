@@ -1,7 +1,13 @@
 var canvas = document.getElementById('smoke');
 var ctx = canvas.getContext('2d');
-canvas.width = 1000;
-canvas.height = 1000;
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+    
+window.addEventListener('resize', function(){
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+}, true);
 
 var smoke = smokemachine(ctx, [54, 16.8, 18.2]);
 
