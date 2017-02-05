@@ -131,7 +131,7 @@
 
         DeanTown.smoke.addsmoke(Math.floor(Math.random() * innerWidth) + 1, Math.floor(Math.random() * innerHeight) + 1 , 1);
 
-        window.requestAnimationFrame(DeanTown.addRandomSmoke);
+        window.requestAnimationFrame(this.addRandomSmoke);
     };
 
     DeanTown.prototype.resetCanvasSize = function(){
