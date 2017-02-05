@@ -122,14 +122,6 @@
     };
 
 
-    DeanTown.prototype.playAudio = function(){
-        var self = this;
-        var offset = this.pausedAt;
-
-        window.DeanTown.source.start(window.DeanTown.player.getCurrentTime());
-        window.DeanTown.audioHasStarted = true;
-    };
-
     DeanTown.prototype.pauseAudio = function(){
         var self = this;
         if(window.DeanTown.audioHasStarted){
