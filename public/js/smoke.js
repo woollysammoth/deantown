@@ -71,7 +71,7 @@ var smokemachine = function (context, color){
     }
 
     function updateanddrawparticles(deltatime){
-        context.clearRect(0, 0, canvas.width, canvas.height);   
+        context.clearRect(0, 0, DeanTown.canvas.width, DeanTown.canvas.height);   
         deltatime = deltatime || 16
         var newparticles = []
         currentparticles = currentparticles.concat(pendingparticles)
