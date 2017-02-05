@@ -103,13 +103,13 @@
     */
 
     DeanTown.prototype.initSmoke = function(){
-        var canvas = document.getElementById('smoke');
-        var ctx = canvas.getContext('2d');
+        this.canvas = document.getElementById('smoke');
+        this.canvasCtx = this.canvas.getContext('2d');
 
-        canvas.width = innerWidth;
-        canvas.height = innerHeight;
+        this.canvas.width = innerWidth;
+        this.canvas.height = innerHeight;
 
-        this.smoke = smokemachine(ctx, [180, 180, 180]);
+        this.smoke = smokemachine(this.canvasCtx, [180, 180, 180]);
 
         this.smoke.start();
 
