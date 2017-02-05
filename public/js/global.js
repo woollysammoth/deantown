@@ -46,13 +46,13 @@
             //Ended
         } else if (status == 1) {
             //Playing
-            this.playAudio();
+            window.DeanTown.playAudio();
         } else if (status == 2) {
             //Paused
-            this.pauseAudio();
+            window.DeanTown.pauseAudio();
         } else if (status == 3) {
             //Buffering
-            this.pauseAudio();
+            window.DeanTown.pauseAudio();
         } else if (status == 5) {
             //Cued
         }
