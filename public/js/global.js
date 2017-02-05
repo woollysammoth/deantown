@@ -20,26 +20,17 @@
     };
 
 
-    DeanTown.prototype.play = function(){
-        var sourceNode = this.audioCtx.createBufferSource();
-            sourceNode.connect(this.audioCtx.destination);
-            sourceNode.buffer = this.audioFileBuffer;
-            sourceNode.start(0, this.pausedAt);
+    DeanTown.prototype.playAudio = function(){
+        this.source = this.audioCtx.createBufferSource();
+        this.source.connect(this.audioCtx.destination);
+        this.source.buffer = this.audioFileBuffer;
+        this.source.start(0, this.player.getCurrentTime());
 
-        this.player.seekTo(this.pausedAt); 
-        this.player.playVideo();
-
-        this.startedAt = this.audioCtx.currentTime - this.pausedAt;
-        this.pausedAt = 0;
         this.playing = true;
     };
 
     DeanTown.prototype.pause = function(pauseVideo){
-        var elapsed = this.audioCtx.currentTime - this.startedAt;
-
         this.stop();
-        this.pausedAt = elapsed;
-        if(pauseVideo) this.player.pauseVideo();
     };
 
     DeanTown.prototype.stop = function() {
@@ -48,8 +39,6 @@
             this.source.stop(0);
             this.source = null;
         }
-        this.pausedAt = 0;
-        this.startedAt = 0;
         this.playing = false;
     };
 
@@ -77,7 +66,7 @@
                         //Ended
                     } else if (status == 1) {
                         //Playing
-                        window.DeanTown.play();
+                        window.DeanTown.playAudio();
                     } else if (status == 2) {
                         //Paused
                         window.DeanTown.pause();
@@ -93,7 +82,7 @@
     };
 
     DeanTown.prototype.startVideo = function(){
-        this.play();
+        this.player.playVideo();
     };
 
     /*
