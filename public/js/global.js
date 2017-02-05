@@ -134,7 +134,7 @@
         window.DeanTown.fbc_array = new Uint8Array(window.DeanTown.analyser.frequencyBinCount);
         window.DeanTown.analyser.getByteFrequencyData(window.DeanTown.fbc_array);
 
-        var amplitude = -(window.DeanTown.fbc_array[5] / 2);
+        var amplitude = window.DeanTown.fbc_array;
 
         console.log("AMP", amplitude);
     }
