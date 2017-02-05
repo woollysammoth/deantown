@@ -93,6 +93,7 @@
 
     DeanTown.prototype.playAudio = function(){
         window.DeanTown.source.start(0);
+        window.DeanTown.audioHasStarted = true;
     };
 
     DeanTown.prototype.pauseAudio = function(){
