@@ -140,7 +140,7 @@
     };
 
 
-    DeanTown = new DeanTown();
+    window.DeanTown = new DeanTown();
 
     function onYouTubeIframeAPIReady() {
         console.log("YT API READY");
