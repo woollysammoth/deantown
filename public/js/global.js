@@ -11,7 +11,6 @@
     };
 
     DeanTown.prototype.playAll = function(){
-        this.startAudio();
         this.startVideo();
     };
 
@@ -91,11 +90,11 @@
     };
 
     DeanTown.prototype.playAudio = function(){
-        window.DeanTown.source.play();
+        window.DeanTown.source.start(0);
     };
 
     DeanTown.prototype.pauseAudio = function(){
-        window.DeanTown.source.pause();
+        window.DeanTown.source.stop();
     };
 
     /*
