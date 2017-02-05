@@ -96,7 +96,9 @@
     };
 
     DeanTown.prototype.pauseAudio = function(){
-        window.DeanTown.source.stop();
+        if(window.DeanTown.audioHasStarted){
+            window.DeanTown.source.stop();
+        }
     };
 
     /*
