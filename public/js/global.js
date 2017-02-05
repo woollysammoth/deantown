@@ -142,6 +142,8 @@
 
     DeanTown = new DeanTown();
 
+
+
     function onYouTubeIframeAPIReady() {
         console.log("YT API READY");
         DeanTown.initVideo();
