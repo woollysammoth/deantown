@@ -21,6 +21,7 @@
 
 
     DeanTown.prototype.playAudio = function(){
+        this.source = null;
         this.source = this.audioCtx.createBufferSource();
         this.source.connect(this.audioCtx.destination);
         this.source.buffer = this.audioFileBuffer;
