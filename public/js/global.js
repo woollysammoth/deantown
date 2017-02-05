@@ -93,7 +93,7 @@
     };
 
     DeanTown.prototype.startVideo = function(){
-        this.player.playVideo();
+        this.play();
     };
 
     /*
