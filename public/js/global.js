@@ -5,22 +5,16 @@ canvas.height = 1000;
 
 var smoke = smokemachine(ctx, [54, 16.8, 18.2]);
 
-smoke.start();
-smoke.addsmoke(500,500,10);
+    smoke.start();
 
-setTimeout(function(){
-
-    smoke.stop();
-
-    smoke.addsmoke(600,500,100);
-    smoke.addsmoke(500,600,20);
-
-    for(var i=0;i<10;i++){
-        smoke.step(10);
+    onmousemove = function (e) {
+        var x = e.clientX
+        var y = e.clientY
+        var n = .5
+        var t = Math.floor(Math.random() * 200) + 3800
+        smoke.addsmoke(x, y, n, t)
     }
 
-    setTimeout(function(){
-        smoke.start();
-    },1000);
-
-},1000);
+    setInterval(function(){
+        smoke.addsmoke(innerWidth/2, innerHeight, 1);
+    }, 100)
