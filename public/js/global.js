@@ -130,7 +130,7 @@
     };
 
     DeanTown.prototype.frameLooper = function(){
-        window.webkitRequestAnimationFrame(this.frameLooper);
+        window.webkitRequestAnimationFrame(window.DeanTown.frameLooper);
         this.fbc_array = new Uint8Array(this.analyser.frequencyBinCount);
         this.analyser.getByteFrequencyData(this.fbc_array);
 
