@@ -4,6 +4,8 @@
         this.video = null;
         this.audioReady = false;
         this.videoReady = false;
+
+        this.audioHasStarted = false;
     }
 
     DeanTown.prototype.init = function(){
@@ -86,6 +88,7 @@
 
     DeanTown.prototype.startAudio = function(){
         window.DeanTown.source.start(0);
+        window.DeanTown.audioHasStarted = true;
     };
 
     DeanTown.prototype.playAudio = function(){
