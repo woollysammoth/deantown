@@ -131,10 +131,10 @@
 
     DeanTown.prototype.frameLooper = function(){
         window.webkitRequestAnimationFrame(window.DeanTown.frameLooper);
-        this.fbc_array = new Uint8Array(this.analyser.frequencyBinCount);
-        this.analyser.getByteFrequencyData(this.fbc_array);
+        window.DeanTown.fbc_array = new Uint8Array(window.DeanTown.analyser.frequencyBinCount);
+        window.DeanTown.analyser.getByteFrequencyData(window.DeanTown.fbc_array);
 
-        var amplitude = -(this.fbc_array[5] / 2);
+        var amplitude = -(window.DeanTown.fbc_array[5] / 2);
 
         console.log("AMP", amplitude);
     }
