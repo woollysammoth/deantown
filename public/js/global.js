@@ -74,14 +74,8 @@
         request.responseType = 'arraybuffer';
 
         request.onload = function() {
-            self.audioCtx.decodeAudioData(request.response, function(buffer) {
-                self.source.buffer = buffer;
-                self.source.connect(self.audioCtx.destination);
-                self.source.loop = true;
-                self.audioReady = true;
-            }, function(e) {
-                console.log('Audio error! ', e);
-            });
+            self.audioFile = request.response;
+            self.audioReady = true;
         }
 
         request.send();
@@ -93,8 +87,17 @@
     };
 
     DeanTown.prototype.playAudio = function(){
-        window.DeanTown.source.start(window.DeanTown.player.getCurrentTime());
-        window.DeanTown.audioHasStarted = true;
+        var self = this;
+
+            this.audioCtx.decodeAudioData(this.audioFile, function(buffer) {
+                self.source.buffer = buffer;
+                self.source.connect(self.audioCtx.destination);
+                self.source.loop = true;
+                window.DeanTown.source.start(window.DeanTown.player.getCurrentTime());
+                window.DeanTown.audioHasStarted = true;
+            }, function(e) {
+                console.log('Audio error! ', e);
+            });
     };
 
     DeanTown.prototype.pauseAudio = function(){
