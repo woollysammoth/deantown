@@ -142,11 +142,10 @@
 
     DeanTown = new DeanTown();
 
-
-
     function onYouTubeIframeAPIReady() {
         console.log("YT API READY");
         DeanTown.initVideo();
+        DeanTown.initAudio();
         DeanTown.initSmoke();
     }
 
