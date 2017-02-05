@@ -23,14 +23,14 @@
         this.video = new YT.Player('#video', {
             autoplay: false,
             events: {
-                'onReady': this.onVideoReady,
-                'onStateChange': this.onVideoStateChange
+                'onReady': window.DeanTown.onVideoReady,
+                'onStateChange': window.DeanTown.onVideoStateChange
             }
         });
     };
 
     DeanTown.prototype.startVideo = function(){
-        this.video.playVideo();
+        this.video.play();
     };
 
     DeanTown.prototype.onVideoReady = function(event){
