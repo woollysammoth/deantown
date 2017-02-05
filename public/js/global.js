@@ -31,6 +31,8 @@
                 'onStateChange': function(event){
                     var status = event.data;
 
+                    console.log(event, status);
+
                     if (status == -1) {
                         //Unstarted
                     } else if (status == 0) {
