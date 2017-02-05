@@ -25,6 +25,7 @@
             autoplay: false,
             events: {
                 'onReady': function(event){
+                    event.target.setVolume(0);
                     window.DeanTown.player = event.target;
                     window.DeanTown.videoReady = true;
                 },
