@@ -22,5 +22,5 @@ var smoke = smokemachine(ctx, [180, 180, 180]);
     }
 
     setInterval(function(){
-        smoke.addsmoke(innerWidth/2, innerHeight/1.9, 1);
+        smoke.addsmoke(innerWidth - (innerWidth / (Math.rand() * 10)), innerHeight - (innerHeight / (Math.rand() * 10)), 1);
     }, 100)
