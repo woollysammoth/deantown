@@ -94,7 +94,7 @@
     DeanTown.prototype.playAudio = function(){
 
         var newSource = window.DeanTown.audioCtx.createBufferSource(); 
-            newSource.buffer = window.DeanTown.source;
+            newSource.buffer = window.DeanTown.source.buffer;
 
         window.DeanTown.source = newSource;
 
