@@ -69,9 +69,11 @@ var smokemachine = function (context, color){
             pendingparticles.push(new particle(x,y,lifetime))
         };
     }
-    
+
 
     function updateanddrawparticles(deltatime){
+        if(!window.DeanTown){ return; };
+        
         context.clearRect(0, 0, DeanTown.canvas.width, DeanTown.canvas.height);   
         deltatime = deltatime || 16
         var newparticles = []
