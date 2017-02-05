@@ -115,11 +115,11 @@
                     self.audioFileBuffer = buffer;
                     self.source.buffer = buffer;
                     self.analyser = self.audioCtx.createAnalyser();
+                    self.source.connect(self.analyser);
+                    self.analyser.connect(self.audioCtx.destination);
                     self.source.connect(self.audioCtx.destination);
                     self.source.loop = true;
                     self.audioReady = true;
-                    self.source.connect(self.analyser);
-                    self.analyser.connect(self.audioCtx.destination);
                     self.frameLooper();
                 }, function(e) {
                     console.log('Audio error! ', e);
