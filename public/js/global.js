@@ -107,6 +107,8 @@
             window.DeanTown.source.stop();
             this.audioReady = false;
 
+            this.source = this.audioCtx.createBufferSource();
+
             this.audioCtx.decodeAudioData(this.audioFile, function(buffer) {
                 self.source.buffer = buffer;
                 self.source.connect(self.audioCtx.destination);
