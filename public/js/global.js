@@ -20,7 +20,7 @@
     */
 
     DeanTown.prototype.initVideo = function(){
-        this.video = new YT.Player('#video', {
+        this.video = new YT.Player('video', {
             autoplay: false,
             events: {
                 'onReady': window.DeanTown.onVideoReady,
@@ -30,7 +30,7 @@
     };
 
     DeanTown.prototype.startVideo = function(){
-        this.video.play();
+        this.video.playVideo();
     };
 
     DeanTown.prototype.onVideoReady = function(event){
