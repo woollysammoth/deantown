@@ -114,12 +114,12 @@
                self.audioCtx.decodeAudioData(self.audioFile, function(buffer) {
                     self.audioFileBuffer = buffer;
                     self.source.buffer = buffer;
-                    self.analyser = context.createAnalyser();
+                    self.analyser = self.audioCtx.createAnalyser();
                     self.source.connect(self.audioCtx.destination);
                     self.source.loop = true;
                     self.audioReady = true;
-                    self.source.connect(analyser);
-                    self.analyser.connect(context.destination);
+                    self.source.connect(self.analyser);
+                    self.analyser.connect(self.audioCtx.destination);
                     self.frameLooper();
                 }, function(e) {
                     console.log('Audio error! ', e);
