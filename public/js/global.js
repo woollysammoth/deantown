@@ -6,6 +6,9 @@
         this.videoReady = false;
 
         this.audioHasStarted = false;
+        this.startedAt = 0;
+        this.pausedAt = 0;
+        this.playing = false;
     }
 
     DeanTown.prototype.init = function(){
@@ -14,6 +17,40 @@
 
     DeanTown.prototype.playAll = function(){
         this.startVideo();
+    };
+
+
+    DeanTown.prototype.play = function(){
+        var sourceNode = this.audioCtx.createBufferSource();
+            sourceNode.connect(this.audioCtx.destination);
+            sourceNode.buffer = this.audioFileBuffer;
+            sourceNode.start(0, this.pausedAt);
+
+        this.player.seekTo(this.pausedAt); 
+        this.player.playVideo();
+
+        this.startedAt = this.audioCtx.currentTime - this.pausedAt;
+        this.pausedAt = 0;
+        this.playing = true;
+    };
+
+    DeanTown.prototype.pause = function(pauseVideo){
+        var elapsed = this.audioCtx.currentTime - this.startedAt;
+
+        this.stop();
+        this.pausedAt = elapsed;
+        if(pauseVideo) this.player.pauseVideo();
+    };
+
+    DeanTown.prototype.stop = function() {
+        if (this.source) {
+            this.source.disconnect();
+            this.source.stop(0);
+            this.source = null;
+        }
+        this.pausedAt = 0;
+        this.startedAt = 0;
+        this.playing = false;
     };
 
     /*
@@ -40,13 +77,13 @@
                         //Ended
                     } else if (status == 1) {
                         //Playing
-                        window.DeanTown.playAudio();
+                        window.DeanTown.play();
                     } else if (status == 2) {
                         //Paused
-                        window.DeanTown.pauseAudio();
+                        window.DeanTown.pause();
                     } else if (status == 3) {
                         //Buffering
-                        window.DeanTown.pauseAudio();
+                        window.DeanTown.pause();
                     } else if (status == 5) {
                         //Cued
                     }
@@ -76,6 +113,7 @@
         request.onload = function() {
             self.audioFile = request.response;
                self.audioCtx.decodeAudioData(self.audioFile, function(buffer) {
+                    self.audioFileBuffer = buffer;
                     self.source.buffer = buffer;
                     self.source.connect(self.audioCtx.destination);
                     self.source.loop = true;
@@ -96,6 +134,7 @@
 
     DeanTown.prototype.playAudio = function(){
         var self = this;
+        var offset = this.pausedAt;
 
         window.DeanTown.source.start(window.DeanTown.player.getCurrentTime());
         window.DeanTown.audioHasStarted = true;
