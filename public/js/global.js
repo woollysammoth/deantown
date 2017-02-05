@@ -121,7 +121,7 @@
             window.DeanTown.smoke.addsmoke(x, y, n, t)
         }
 
-        window.requestAnimationFrame(DeanTown.addRandomSmoke);
+        window.requestAnimationFrame(window.DeanTown.addRandomSmoke);
     };
 
     DeanTown.prototype.addRandomSmoke = function(){
