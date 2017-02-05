@@ -75,7 +75,7 @@
         request.onload = function() {
             self.audioCtx.decodeAudioData(request.response, function(buffer) {
                 self.source.buffer = buffer;
-                self.source.connect(self.audioContext.destination);
+                self.source.connect(self.audioCtx.destination);
                 self.source.loop = true;
                 self.audioReady = true;
             }, function(e) {
