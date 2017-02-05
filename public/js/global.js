@@ -21,6 +21,11 @@ var smoke = smokemachine(ctx, [180, 180, 180]);
         smoke.addsmoke(x, y, n, t)
     }
 
-    setInterval(function(){
-        smoke.addsmoke(innerWidth - (innerWidth / (Math.rand() * 10)), innerHeight - (innerHeight / (Math.rand() * 10)), 1);
-    }, 100)
+function addSmoke(){
+    smoke.addsmoke(Math.floor(Math.random() * innerWidth) + 1, Math.floor(Math.random() * innerHeight) + 1 , 1);
+
+    window.requestAnimationFrame(addSmoke);
+}
+
+
+window.requestAnimationFrame(addSmoke);
