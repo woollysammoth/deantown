@@ -144,6 +144,8 @@
         DeanTown.initSmoke();
     }
 
+    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+
     window.checkAudioVideo = setInterval(function(){
         if(DeanTown.audioReady && DeanTown.videoReady){
             DeanTown.playAll();
