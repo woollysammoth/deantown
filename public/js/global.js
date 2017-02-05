@@ -28,34 +28,32 @@
                     window.DeanTown.player = event.target;
                     window.DeanTown.videoReady = true;
                 },
-                'onStateChange': window.DeanTown.onVideoStateChange
+                'onStateChange': function(event){
+                    var status = event.data;
+
+                    if (status == -1) {
+                        //Unstarted
+                    } else if (status == 0) {
+                        //Ended
+                    } else if (status == 1) {
+                        //Playing
+                        window.DeanTown.playAudio();
+                    } else if (status == 2) {
+                        //Paused
+                        window.DeanTown.pauseAudio();
+                    } else if (status == 3) {
+                        //Buffering
+                        window.DeanTown.pauseAudio();
+                    } else if (status == 5) {
+                        //Cued
+                    }
+                }
             }
         });
     };
 
     DeanTown.prototype.startVideo = function(){
         this.player.playVideo();
-    };
-
-    DeanTown.prototype.onVideoStateChange = function(event){
-        var status = event.data;
-
-        if (status == -1) {
-            //Unstarted
-        } else if (status == 0) {
-            //Ended
-        } else if (status == 1) {
-            //Playing
-            window.DeanTown.playAudio();
-        } else if (status == 2) {
-            //Paused
-            window.DeanTown.pauseAudio();
-        } else if (status == 3) {
-            //Buffering
-            window.DeanTown.pauseAudio();
-        } else if (status == 5) {
-            //Cued
-        }
     };
 
     /*
