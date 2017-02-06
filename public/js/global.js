@@ -33,9 +33,9 @@
 
         console.log("logo", window.DeanTown.freqArray[12], window.DeanTown.freqArray);
 
-        window.DeanTown.logo.style.webkitTransform = "scale(" + window.DeanTown.freqArray[22] / 100 + ")";
-        window.DeanTown.logo.style.mozTransform = "scale(" + window.DeanTown.freqArray[22] / 100 + ")";
-        window.DeanTown.logo.style.transform = "scale(" + window.DeanTown.freqArray[22] / 100 + ")";
+        window.DeanTown.logo.style.webkitTransform = "scale(" + window.DeanTown.freqArray[16] / 100 + ")";
+        window.DeanTown.logo.style.mozTransform = "scale(" + window.DeanTown.freqArray[16] / 100 + ")";
+        window.DeanTown.logo.style.transform = "scale(" + window.DeanTown.freqArray[16] / 100 + ")";
     };
 
 
