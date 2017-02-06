@@ -12,11 +12,9 @@
 
 
         this.analyser = null;
-        this.fbc_array = [];
-        this.bars = null;
-        this.bar_x = null;
-        this.bar_width = null;
-        this.bar_height = null;
+        this.freqArray = null;
+
+        this.logo = document.getElementById("logo");
 
     }
 
@@ -28,10 +26,19 @@
         this.startVideo();
     };
 
+    DeanTown.prototype.updateLogo = function(){
+        window.requestAnimationFrame(DeanTown.updateLogo);
+
+        DeanTown.analyser.getByteFrequencyData(freqArray);
+
+        self.logo.style.transform("rotate() scale(" + freqArray[12] + ") skewX() skewY()");
+    };
+
 
     DeanTown.prototype.playAudio = function(){
         this.source = null;
         this.source = this.audioCtx.createBufferSource();
+        this.source.connect(this.analyser);
         this.source.connect(this.audioCtx.destination);
         this.source.buffer = this.audioFileBuffer;
         this.source.start(0, this.player.getCurrentTime());
@@ -115,12 +122,13 @@
                     self.audioFileBuffer = buffer;
                     self.source.buffer = buffer;
                     self.analyser = self.audioCtx.createAnalyser();
+                    self.analyser.fftSize = 64;
+                    self.freqArray = new Uint8Array(analyser.frequencyBinCount);
                     self.source.connect(self.analyser);
-                    self.analyser.connect(self.audioCtx.destination);
                     self.source.connect(self.audioCtx.destination);
                     self.source.loop = true;
                     self.audioReady = true;
-                    self.frameLooper();
+                    self.updateLogo();
                 }, function(e) {
                     console.log('Audio error! ', e);
                 });
@@ -128,16 +136,6 @@
 
         request.send();
     };
-
-    DeanTown.prototype.frameLooper = function(){
-        window.webkitRequestAnimationFrame(window.DeanTown.frameLooper);
-        window.DeanTown.fbc_array = new Uint8Array(window.DeanTown.analyser.frequencyBinCount);
-        window.DeanTown.analyser.getByteFrequencyData(window.DeanTown.fbc_array);
-
-        var amplitude = window.DeanTown.fbc_array;
-
-        console.log("AMP", amplitude);
-    }
 
     DeanTown.prototype.startAudio = function(){
         window.DeanTown.source.start(0);
@@ -206,6 +204,8 @@
 
 
     window.DeanTown = new DeanTown();
+
+    DeanTown.updateLogo();
 
     function onYouTubeIframeAPIReady() {
         console.log("YT API READY");
