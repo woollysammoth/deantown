@@ -50,7 +50,6 @@
 
         this.playing = true;
 
-        document.getElementById("loader").style.display = "none";
     };
 
     DeanTown.prototype.pause = function(pauseVideo){
@@ -135,6 +134,8 @@
                     self.source.loop = true;
                     self.audioReady = true;
                     self.updateLogo();
+                    document.getElementById("loader").style.display = "none";
+                    
                 }, function(e) {
                     console.log('Audio error! ', e);
                 });
