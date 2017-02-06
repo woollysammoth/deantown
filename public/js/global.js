@@ -31,7 +31,7 @@
 
         window.DeanTown.analyser.getByteFrequencyData(window.DeanTown.freqArray);
 
-        self.logo.style.transform("rotate() scale(" + window.DeanTown.freqArray[12] + ") skewX() skewY()");
+        window.DeanTown.logo.style.transform = "rotate() scale(" + window.DeanTown.freqArray[12] + ") skewX() skewY()";
     };
 
 
