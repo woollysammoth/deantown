@@ -70,6 +70,19 @@ a{
 
 }
 
+#loader{
+	position:fixed;
+	top:50%;
+	margin-top:50px;
+	left:50%;
+	width:200px;
+	margin-left:-100px;
+	text-align:center;
+	color:#fff;
+	font-weight:bold;
+	
+}
+
 @media (min-aspect-ratio: 16/9) {
   .video-foreground { height: 300%; top: -100%; }
 }

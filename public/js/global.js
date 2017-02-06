@@ -49,6 +49,8 @@
         this.audioHasStarted = true;
 
         this.playing = true;
+
+        document.getElementById("loader").style.display = "none";
     };
 
     DeanTown.prototype.pause = function(pauseVideo){
