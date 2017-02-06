@@ -51,7 +51,7 @@ body{
 	margin-top:-100px;
 	width:200px;
 	height:200px;
-	background-image:url('public/img/logo.png');
+	background-image:url('../img/logo.png');
 	background-size:cover;
 
 }
