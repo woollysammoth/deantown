@@ -123,7 +123,7 @@
                     self.source.buffer = buffer;
                     self.analyser = self.audioCtx.createAnalyser();
                     self.analyser.fftSize = 64;
-                    self.freqArray = new Uint8Array(analyser.frequencyBinCount);
+                    self.freqArray = new Uint8Array(self.analyser.frequencyBinCount);
                     self.source.connect(self.analyser);
                     self.source.connect(self.audioCtx.destination);
                     self.source.loop = true;
