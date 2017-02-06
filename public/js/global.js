@@ -27,7 +27,7 @@
     };
 
     DeanTown.prototype.updateLogo = function(){
-        window.requestAnimationFrame(DeanTown.updateLogo);
+        window.requestAnimationFrame(window.DeanTown.updateLogo);
 
         DeanTown.analyser.getByteFrequencyData(freqArray);
 
@@ -204,8 +204,6 @@
 
 
     window.DeanTown = new DeanTown();
-
-    DeanTown.updateLogo();
 
     function onYouTubeIframeAPIReady() {
         console.log("YT API READY");
