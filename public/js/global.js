@@ -29,7 +29,7 @@
     DeanTown.prototype.updateLogo = function(){
         window.requestAnimationFrame(window.DeanTown.updateLogo);
 
-        DeanTown.analyser.getByteFrequencyData(freqArray);
+        window.DeanTown.analyser.getByteFrequencyData(window.DeanTown.freqArray);
 
         self.logo.style.transform("rotate() scale(" + freqArray[12] + ") skewX() skewY()");
     };
